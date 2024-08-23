@@ -13,7 +13,7 @@
     transform: rotate(0deg);
     background-position: center;
     position: relative;
-    top: -185px;
+    top: -205px;
   }
 body {
     background-color: #002125;
@@ -112,11 +112,36 @@ body {
             font-family: "Mulish", sans-serif;
             z-index: 5;
         }
+        
+        .rainbow-text1 {
+            font-size: 15px; 
+            position: relative;
+            top: 520px;
+            font-weight: bold;
+            text-align: center;
+            animation: rainbowAnimation 2s ease infinite reverse; 
+            font-family: "Mulish", sans-serif;
+            z-index: 5;
+            display: flex;
+        }
+        
+        @keyframes move {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+        }
+        
 </style>
 <div class="container">
     <p class='text' id='text'>0
-     <p class='text1'>km</p></p>
+     <p class='text1'>km</p>
 <h1 class="rainbow-text">Стьопа:0</h1>
+<h1 class="rainbow-text1" id='click'>Натисніть для звуку:)</h1>
  <div class='img' id='img'></div>
 </div>
 <div class="background"></div>
@@ -138,6 +163,22 @@ function turn() {
       km++
       value.innerText = (km / 100)
     }, 1);
+}
+let c = 1
+window.onload = function() {
+    document.addEventListener('click', () => {
+        if (c == 1) {
+    const click = document.getElementById('click')
+    click.style.animation = 'rainbowAnimation 2s ease infinite reverse, move 0.5s ease'
+    const music = new Audio('https://d3qovm8v08j5as.cloudfront.net/l6plxn%2Ffile%2Ffd4971fe62e915fa78a198b6067077b6_128390d71db7bcd8bb39bedbc7a326c2.mp3?response-content-disposition=inline%3Bfilename%3D%22fd4971fe62e915fa78a198b6067077b6_128390d71db7bcd8bb39bedbc7a326c2.mp3%22%3B&response-content-type=audio%2Fmpeg&Expires=1724424291&Signature=IV8TPPb~84VeScY7qmQ8QqiCbEGohJwlxXcky98PR~ddo2y7aU2EMcSWmYIt7yGxe9spHolUu2uRwMQFnONzR8rE5UXSxXa5sA1U7YFHeLn-rt-tATL7Q538cARueG1swQlRWSqqpg9dRW0McRBYIxPe5rg2hNHuXJ9ZZzPlt8C2ihhU2-dwR7HxlaXq3ReLbziR2Dc8qip0sabyTB78RL3YsVnErajzIWiDNx3FzcW~m5sJuEAfC8sTL7Kf~nVMEEY9AoE3ZASeGVLPr4voZNg5M2iN2GNZakw-tCcrYbpISvzU9a9UEzo3ai~O4xRfO0B86GQeK~GiKUUwow~6yg__&Key-Pair-Id=APKAJT5WQLLEOADKLHBQ');
+    music.play();
+    c--
+    setTimeout(() => {
+                click.style.display = 'none'
+                img.style.top = '-165px'
+            }, 500);
+        }
+    })
 }
 turn();
 </script>
